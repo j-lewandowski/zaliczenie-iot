@@ -11,6 +11,7 @@ const io = new Server(server, {
 });
 
 let currentPrice = {
+  name: "test",
   price: 0.0,
   editedAt: new Date(),
 };
@@ -24,6 +25,7 @@ io.on("connection", (socket) => {
 
   socket.on("test", () => {
     const data = {
+      name: "test",
       price: 12.5,
       editedAt: new Date(),
     };
@@ -32,9 +34,9 @@ io.on("connection", (socket) => {
 
   socket.on("setNewPrice", (data) => {
     // @TODO - db connection
-    currentPrice = data; // act like DB, gonna implement db connection later on
+    currentPrice = { ...data, editedAt: new Date() }; // act like DB, gonna implement db connection later on
 
-    socket.emit("priceChanged");
+    socket.emit("priceChanged", currentPrice);
   });
 
   socket.on("getCurrentPrice", () => {
