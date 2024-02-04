@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="./css/index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>client label</title>
+    <script
+      src="https://cdn.socket.io/4.5.4/socket.io.min.js"
+      integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navContainer">Price Tag </div>
+    </div>
+    <div class="container">
+      <!-- <div id="objectContainer"></div> -->
+
+      <div class="dataWrapper">
+        <div class="dataContainer">
+          <div class="tagNames">
+            <p id="productName"></p>
+            <p id="productPrice"></p>
+          </div>
+          <div id="objectContainer"></div>
+        </div>
+      </div>
+    </div>
+   <!-- <div class="container">
+    <div id="main-container">
+      <div>
+        <p id="productName"></p>
+      </div>
+
+      <div>
+        <p id="productPrice"></p>
+      </div>-->
+
+      <script>
+        const socket = io("https://ceny-412721.lm.r.appspot.com/");
+        let objectContainer = document.getElementById("objectContainer");
+      let data;
+      let displayString = "";
+        socket.emit("getCurrentPrice");
+        socket.on("currentPrice", (data) => {
+          const productName = data.name;
+          const productPrice = data.price;
+          document.getElementById("productName").innerText = `${productName}`;
+          document.getElementById("productPrice").innerText = `${productPrice}`;
+        });
+        objectContainer.innerHTML = "";
+        socket.on("priceChanged", (data) => {
+          const productName = data.name;
+          const productPrice = data.price;
+          document.getElementById("productName").innerText = `${productName}`;
+          document.getElementById("productPrice").innerText = `${productPrice}`;
+        });
+        objectContainer.innerHTML = displayString;
+      </script>
+    </div>
+  </body>
+</html>

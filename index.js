@@ -24,19 +24,20 @@ io.on("connection", (socket) => {
   console.log(`Client-${socket.id} connected!`);
 
   socket.on("test", () => {
-    const data = {
-      name: "test",
-      price: 12.5,
-      editedAt: new Date(),
-    };
-    socket.emit("test", data);
+    // const data = {
+    //   name: "test",
+    //   price: 12.5,
+    //   editedAt: new Date(),
+    // };
+    io.sockets.emit("test", data);
   });
 
   socket.on("setNewPrice", (data) => {
     // @TODO - db connection
     currentPrice = { ...data, editedAt: new Date() }; // act like DB, gonna implement db connection later on
 
-    socket.emit("priceChanged", currentPrice);
+    io.sockets.emit("test", currentPrice);
+    io.sockets.emit("priceChanged", currentPrice);
   });
 
   socket.on("getCurrentPrice", () => {

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="./css/index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="navContainer">Items manager</div>
+    </div>
+    <div class="container">
+      <!-- <div id="objectContainer"></div> -->
+
+      <div class="dataWrapper">
+        <div class="dataContainer">
+          <div class="tagNames">
+            <p>Name</p>
+            <p>Price</p>
+            <p>Edited at</p>
+          </div>
+          <div id="objectContainer"></div>
+        </div>
+        <div class="buttonContainer">
+          <p id="clickableHeader">Click to save current state</p>
+        </div>
+      </div>
+    </div>
+    <script>
+      const socket = io.connect('https://ceny-412721.lm.r.appspot.com/')
+      let objectContainer = document.getElementById('objectContainer')
+      let data
+      let displayString = ''
+
+      socket.emit('getCurrentPrice')
+
+      socket.on('currentPrice', (res) => {
+        console.log(res)
+        data = res
+
+        objectContainer.innerHTML = ''
+
+        for (let property in data) {
+          if (data.hasOwnProperty(property)) {
+            displayString +=
+              '<input id=' + property + ' value =' + data[property] + '>'
+          }
+        }
+
+        objectContainer.innerHTML = displayString
+      })
+
+      document
+        .getElementById('clickableHeader')
+        .addEventListener('click', function () {
+          const name = document.getElementById('name').value
+          const cena = document.getElementById('price').value
+          let changedInfo = {
+            name: name,
+            price: cena,
+          }
+          console.log(changedInfo)
+
+          socket.emit('setNewPrice', changedInfo)
+
+          location.reload()
+        })
+    </script>
+  </body>
+</html>

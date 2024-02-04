@@ -1,0 +1,121 @@
+body {
+  font-family: "Work Sans", sans-serif;
+  color: #e0e1dd;
+  background: #0d1b2a;
+  margin: 0;
+}
+
+input {
+  all: unset;
+}
+
+p {
+  margin: 0;
+}
+
+.navbar {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  background-color: #1b263b;
+}
+.navbar .navContainer {
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+.container .dataWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 466px;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 15px;
+  background-color: #415a77;
+}
+.container .dataWrapper .dataContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.container .dataWrapper .dataContainer .tagNames {
+  padding: 0.5rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.container .dataWrapper .dataContainer .tagNames p {
+  width: 100px;
+}
+.container .dataWrapper .dataContainer #objectContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.container .dataWrapper .dataContainer #objectContainer input {
+  width: 350px;
+  background-color: #778da9;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+.container .dataWrapper .dataContainer #objectContainer input:nth-child(2) {
+  margin: 0.5rem 0;
+}
+.container .dataWrapper .dataContainer #objectContainer input:nth-child(3) {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+.container .dataWrapper .buttonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  padding-top: 1rem;
+}
+.container .dataWrapper .buttonContainer #clickableHeader {
+  margin-left: auto;
+  text-align: center;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  background-color: #778da9;
+  border-radius: 10px;
+  border-style: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  cursor: pointer;
+  font-size: 0.8rem;
+  height: 40px;
+  line-height: 20px;
+  padding: 10px 16px;
+  width: 100%;
+}
+.container .dataWrapper .buttonContainer #clickableHeader:hover, .container .dataWrapper .buttonContainer #clickableHeader:focus {
+  background-color: #427aa1;
+}/*# sourceMappingURL=index.css.map */
